@@ -1,10 +1,10 @@
 {
   "version": "1.0.0",
   "build": 10000,
-  "publishedAt": "2026-09-12",
+  "publishedAt": "2026-09-13",
   "minimumSystemVersion": "13.0",
-  "notes": "First release. A macOS taskbar that replaces uBar, and can exclude apps uBar cannot tell apart.",
+  "notes": "First release.",
   "downloadURL": "https://github.com/mannnnnnnngo/Mangobar/releases/download/v1.0.0/mangobar-1.0.0.dmg",
-  "sha256": "",
+  "sha256": "ee6b630cb39ee2c4da535ac37065010242cfb8ececac1f10adfe8292fab52813",
   "releasePage": "https://github.com/mannnnnnnngo/Mangobar/releases/tag/v1.0.0"
 }
