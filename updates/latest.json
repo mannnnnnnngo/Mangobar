@@ -1,10 +1,10 @@
 {
-  "version": "1.1.0",
-  "build": 10100,
+  "version": "1.1.1",
+  "build": 10101,
   "publishedAt": "2026-09-14",
   "minimumSystemVersion": "13.0",
-  "notes": "- keep python.app in the bundle\n- readme wording\n- keep the interpreter for the bundle check\n- verify the built bundle can import itself\n- self-contained app, clickable previews, sidebar prefs, tutorial\n- check for updates menu item\n- fix bundle path walk\n- updater and updates preferences tab\n- release 1.0.0\n- merge release workflow\n- build prerequisites for ci\n- mark scripts executable\n- release workflow",
-  "downloadURL": "https://github.com/mannnnnnnngo/Mangobar/releases/download/v1.1.0/mangobar-1.1.0.dmg",
-  "sha256": "cd486b9986c97b53d0287f98c53e1a565efd5fd52a914f71538e301ca8952002",
-  "releasePage": "https://github.com/mannnnnnnngo/Mangobar/releases/tag/v1.1.0"
+  "notes": "MangoBar now moves the macOS Dock out of its way on first run - to the right, hidden until the pointer goes there - so there is one taskbar along the bottom rather than two fighting over the same clicks. What the Dock was doing before is saved and put back when you switch it off or quit. Preferences > Advanced has the three settings.",
+  "downloadURL": "https://github.com/mannnnnnnngo/Mangobar/releases/download/v1.1.1/mangobar-1.1.1.dmg",
+  "sha256": "b79f5a74f82cbb3c7857e344bec71df8273083ecc5609297e96fd906830dcab5",
+  "releasePage": "https://github.com/mannnnnnnngo/Mangobar/releases/tag/v1.1.1"
 }
