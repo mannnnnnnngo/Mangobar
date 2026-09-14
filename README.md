@@ -14,8 +14,7 @@ Made by Mingyu 🧑‍💻
 ![Python](https://img.shields.io/badge/Python-PyObjC-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Version](https://img.shields.io/badge/version-1.1.0-7C5CFF?style=for-the-badge)
 ![Price](https://img.shields.io/badge/price-free-2EA043?style=for-the-badge)
-![Permissions](https://img.shields.io/badge/screen%20recording-required-F09614?style=for-the-badge)
-![Data](https://img.shields.io/badge/data%20sent%20anywhere-none-2EA043?style=for-the-badge)
+![Permissions](https://img.shields.io/badge/permissions%20to%20run-none-0EA5E9?style=for-the-badge)
 
 </div>
 
@@ -23,15 +22,9 @@ Made by Mingyu 🧑‍💻
 
 > [!NOTE]
 > **MangoBar is completely free.** 🆓 It is macOS only — it is PyObjC talking to AppKit, which
-> doesn't exist anywhere else. The installed app is **self-contained**: it carries its own copy
-> of Python, so there is nothing to install alongside it. 🐍
-
-> [!IMPORTANT]
-> **1.1.0 fixes MangoBar not opening.** Every release before this one shipped an app bundle that
-> pointed at the *build machine's* source folder — `/Users/runner/work/Mangobar` on the GitHub
-> runner that built it. That path exists on nobody else's Mac, so the app launched, failed to
-> import itself, and died without drawing anything. It now carries its source, its packages and a
-> whole Python interpreter inside the bundle, and refers to nothing outside it.
+> doesn't exist anywhere else. **No Xcode required**, and no compile step either: the app is a
+> thin shim around the Python in this folder, so editing the source takes effect on the next
+> launch. 🐍
 
 ---
 
@@ -41,7 +34,6 @@ Made by Mingyu 🧑‍💻
 | --- | --- | --- |
 | [🧐 Why this exists](#-why-this-exists) | [📥 Install](#-install) | [👀 Using it](#-using-it) |
 | [🚫 Excluding apps](#-excluding-apps) | [🧩 Layout](#-layout) | [🔐 Permissions](#-permissions) |
-| [🕶️ Privacy](#️-privacy) | [🆕 What's new in 1.1.0](#-whats-new-in-110) | |
 | [⚙️ Configuration](#-configuration) | [🪫 Memory](#-memory) | [🚧 Known limitations](#-known-limitations) |
 | [🗂️ Where things live](#-where-things-live) | [🧱 Source layout](#-source-layout) | [🗑️ Uninstall](#-uninstall) |
 
@@ -69,77 +61,49 @@ To be a hundred percent honest, the other reason is wanting my own version. 🥭
 
 ## 📥 Install
 
-Download **`mangobar-1.1.0.dmg`** from the
-[latest release](https://github.com/mannnnnnnngo/Mangobar/releases/latest), drag the mango onto
-Applications, then **right-click MangoBar → Open** the first time. That last step matters — the
-app isn't signed with a paid Apple developer account, and right-click → Open is Apple's own way
-past the warning. You only do it once.
-
-Nothing else needs installing. The bundle carries its own Python and its own copies of PyObjC.
-
-### Building it yourself
-
 ```bash
 python3 -m venv .venv
 .venv/bin/pip install pyobjc-framework-Cocoa pyobjc-framework-Quartz pyobjc-framework-ApplicationServices
-./build_app.sh          # builds and installs to /Applications
-./package.sh            # builds and wraps it in dist/mangobar-<version>.dmg
+./build_app.sh
 ```
 
-The venv's Python is the one that gets **copied into the bundle**, so it has to be a framework or
-`--enable-shared` build — python.org, Homebrew and `actions/setup-python` all are. `build_app.sh`
-says so plainly rather than producing a bundle that cannot start.
+Installs **MangoBar.app** into `/Applications` so it shows up in Finder like any other app. The
+source stays in this folder — the app is a thin shim, so editing Python takes effect on the next
+launch with no rebuild. Only re-run `build_app.sh` if `bundle/launcher.c`, the `Info.plist` or
+`VERSION` changes.
 
 > [!IMPORTANT]
-> The launcher **embeds** the Python interpreter rather than exec-ing it. That is what makes macOS
-> attribute Screen Recording and Accessibility grants to **MangoBar** — not to Python, and not to
-> your editor. It `dlopen`s it rather than linking it, so a broken interpreter is a dialog you can
-> read instead of a crash inside dyld that says nothing. 🔐
+> The launcher **embeds** the Python interpreter rather than exec-ing it. That is what makes
+> macOS attribute Screen Recording and Accessibility grants to **MangoBar** — not to Python, and
+> not to your editor. 🔐
 
-Because the source is copied in, editing `mangobar/*.py` needs a rebuild to show up in the
-installed app. While working, run it straight out of this folder instead:
+For development without installing:
 
 ```bash
 ./run.sh
 ```
 
-First run writes `~/.config/mangobar/config.json` and shows the seven-step tour.
+First run writes `~/.config/mangobar/config.json`.
 
 ---
 
 ## 👀 Using it
 
-MangoBar is a dock. Hide Apple's from **System Settings → Desktop & Dock → "Automatically hide and
-show the Dock"** and MangoBar takes over from there.
+Right-click the bar → **Preferences…**. Eight tabs:
 
-| Do this | Get this |
+| Tab | Contents |
 |---|---|
-| 🖱️ Click an app | Go to it. Click the one you're already in and it hides. |
-| 👁️ Point at an app | Its name, and a live picture of its window — even on another desktop. |
-| 🖱️ **Click that picture** | Straight to the app. New in 1.1.0. |
-| 🖱️ Right-click an app | Pin it, so it stays on the bar whether it's running or not. |
-| 🖱️ Right-click the bar | Preferences, the tutorial, permissions, and Quit. |
-
-Clicking an app **always** brings it back now, including when its windows are minimised or you
-closed the last one with ⌘W. Activating an app does not pull a minimised window out of the Dock
-on its own, so MangoBar asks for that explicitly before it activates.
-
-### Preferences
-
-Right-click the bar → **Preferences…**. Eleven panes, in a sidebar grouped three ways:
-
-| Group | Panes |
-|---|---|
-| **Bar** | ⚙️ General · 🎨 Theme · 🧩 Areas |
-| **Contents** | 📜 Menu · 📱 Apps · 🕒 Date & Time |
-| **App** | ⌨️ Shortcuts · 🔒 Permissions · 🔽 Updates · ❓ Tutorial |
+| ⚙️ General | Position, size, margin, corner radius, display, login, hover behaviour |
+| 🎨 Theme | Preset, four colour wells, opacity, blur, icon/font sizing |
+| 🧩 Areas | Show Menu / Desktop / Battery / Trash / Separators / Clock |
+| 📜 Menu | Which folders, utilities and power actions appear in the menu button |
+| 📱 Apps | Included / Excluded lists |
+| 🕒 Date & Time | Clock format, calendar |
+| ⌨️ Shortcuts | Not implemented yet |
+| 🔬 Advanced | Click behaviour, background apps, app order, debug logging |
 
 Everything writes to the same JSON file, which you can also edit directly — changes apply within
 about two seconds, no restart. ✨
-
-**Updates** shows which version you are on, checks for a newer one, and has switches for checking,
-downloading and installing automatically. **Tutorial** replays the seven-step tour. **General**
-has *Open on Login*.
 
 ---
 
@@ -186,53 +150,14 @@ Available widgets: `menu` `desktop` `pinned` `tasks` `battery` `trash` `clock` `
 
 ## 🔐 Permissions
 
+The bar works with **zero permissions**. Two optional features need one:
+
 | Feature | Permission | Without it |
 |---|---|---|
-| 🖼️ Live window previews on hover | **Screen Recording** — required | The hover card shows only the app's name |
-| 🪟 Window titles, per-window switching, restoring minimised windows, Show Desktop | Accessibility — recommended | Falls back to app-level clicks |
+| 🖼️ Live window previews on hover | Screen Recording | Hover shows the name only |
+| 🪟 Window titles, per-window switching, Show Desktop | Accessibility | Falls back to app-level clicks |
 
-Both are asked for the first time MangoBar opens, and both live in **System Settings → Privacy &
-Security**. Preferences → **Permissions** shows what macOS currently thinks and has a button for
-each.
-
-> [!NOTE]
-> Screen Recording is **required** from 1.1.0. It was described as optional before, which was
-> generous in two directions: the previews are most of the reason to point at a button at all,
-> and the code that drew them referred to a module it never imported, so they had in fact never
-> worked in any released version. Both halves of that are fixed here.
->
-> macOS calls the permission Screen Recording because it is the same one a screen recorder uses.
-> MangoBar never records anything — see below.
-
----
-
-## 🕶️ Privacy
-
-**Nothing leaves your Mac.** There is no account, no analytics, and no server.
-
-- Window previews are captured here, held in memory while the card is on screen, and thrown away.
-  They are never written to disk and never sent anywhere.
-- The list of apps you have open never leaves the process that drew it.
-- Your settings are one JSON file in your own home folder.
-
-The only network request MangoBar ever makes is reading one small text file on GitHub to find out
-whether a newer version exists. It sends nothing about you or this Mac, and Preferences → Updates
-switches even that off.
-
----
-
-## 🆕 What's new in 1.1.0
-
-| | |
-|---|---|
-| 🛠️ **It opens** | The bundle is self-contained. Releases before this pointed at the build machine's file paths and died silently on every other Mac. |
-| 🖼️ **Previews work** | `hover_card.py` used `cg.` throughout and never imported it, so every capture raised `NameError` inside a timer and previews had never once appeared. |
-| 🖱️ **Previews are clickable** | Click the picture of a window to go to it. The card stays up while your pointer is on it. |
-| 🪟 **Minimised and ⌘W'd apps come back** | Clicking an app now un-minimises it, or asks it for a new window, instead of appearing to do nothing. |
-| 🗂️ **Sidebar preferences** | Eleven panes grouped into Bar / Contents / App, each with a line saying what it is for. |
-| ❓ **A tutorial** | Seven steps, shown on first launch and replayable from the menu. |
-| 🔒 **A Permissions pane** | Live state, a button each, and the plain statement that nothing leaves this Mac. |
-| 💿 **A proper installer** | The disk image now opens the same drag-to-Applications window the other Mango apps use. |
+Nothing is requested until you use a feature that needs it.
 
 ---
 
@@ -332,12 +257,8 @@ macos/     workspace · screens · windows · cg   ← all AppKit isolated here
 sources/   running_apps · filters · windows_ax  ← where content comes from
 actions/   app_actions · window_actions         ← what clicks do
 ui/        panel · theme · bar_view · menus · hover_card
-           preferences · prefs_fields · prefs_apps · prefs_updates
-           prefs_privacy · prefs_tutorial
            widgets/  base · registry · app_buttons · clock · battery
                      trash · desktop · menu_button · separator
-bundle/    launcher.c · make_icon.swift · the .icns
-installer/ background.swift · make_dmg.sh    ← shared by all five mango apps
 ```
 
 | 📄 File | Purpose |
@@ -349,9 +270,6 @@ installer/ background.swift · make_dmg.sh    ← shared by all five mango apps
 | `mangobar/sources/filters.py` | Include / exclude / override rules applied to the running-app list |
 | `mangobar/ui/widgets/registry.py` | One line per widget — the entire cost of adding one |
 | `mangobar/ui/theme.py` | Every colour and metric. Restyling touches this file only |
-| `mangobar/ui/prefs_fields.py` | Every setting, one line each, plus which sidebar section its tab belongs to |
-| `mangobar/ui/prefs_tutorial.py` | The seven steps, shown both as a pane and as the first-run window |
-| `bundle/launcher.c` | Finds the Python inside the bundle, `dlopen`s it, and runs `mangobar` — with no path from the machine that built it |
 | `checklist.json` | What is done, what isn't, and what was deliberately cut |
 
 Adding a widget: write the module, add one line to `ui/widgets/registry.py`, name it in `areas`.
