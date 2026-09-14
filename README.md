@@ -148,6 +148,35 @@ Available widgets: `menu` `desktop` `pinned` `tasks` `battery` `trash` `clock` `
 
 ---
 
+## 🚢 The macOS Dock
+
+Two taskbars along the same edge is the one arrangement nobody wants: they overlap, they fight
+for the same pointer, and the one underneath wins the clicks. So MangoBar moves the Dock out of
+its way — **to the right, hidden until the pointer goes looking for it** — the first time it runs.
+
+| Setting | Default | |
+| --- | --- | --- |
+| `dock.move_out_of_the_way` | `true` | Off, MangoBar leaves the Dock exactly where it is |
+| `dock.position` | `right` | `right`, `left` or `bottom` |
+| `dock.autohide` | `true` | The Dock slides away until you push the pointer at that edge |
+
+Preferences → **Advanced** → *The macOS Dock* has the same three.
+
+Nothing here is hidden or one-way. It is what you would type yourself:
+
+```bash
+defaults write com.apple.dock orientation -string right
+defaults write com.apple.dock autohide -bool true
+killall Dock
+```
+
+**What the Dock was doing before is written to `~/.config/mangobar/dock-before.json`** the first
+time MangoBar changes it, and put back when you switch the setting off or quit MangoBar —
+because quitting takes the bar away, and a Mac with no bar *and* no Dock is a Mac you cannot use.
+If that file ever goes missing, System Settings → Desktop & Dock has the same two controls.
+
+---
+
 ## 🔐 Permissions
 
 The bar works with **zero permissions**. Two optional features need one:
