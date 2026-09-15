@@ -1,10 +1,10 @@
 {
-  "version": "1.1.2",
-  "build": 10102,
+  "version": "1.2.0",
+  "build": 10200,
   "publishedAt": "2026-09-15",
   "minimumSystemVersion": "13.0",
-  "notes": "update checks are now instant",
-  "downloadURL": "https://github.com/mannnnnnnngo/Mangobar/releases/download/v1.1.2/mangobar-1.1.2.dmg",
-  "sha256": "2d6f1432723cbc804e5fca815d35075b90f2b2e5aee15fd4abf5539c46cd417e",
-  "releasePage": "https://github.com/mannnnnnnngo/Mangobar/releases/tag/v1.1.2"
+  "notes": "update checks work again, and permissions stop resetting on every update",
+  "downloadURL": "https://github.com/mannnnnnnngo/Mangobar/releases/download/v1.2.0/mangobar-1.2.0.dmg",
+  "sha256": "0f61589510fb2ca4f330486d39666512f4f2a971105754f21f2108b71fc9a6e1",
+  "releasePage": "https://github.com/mannnnnnnngo/Mangobar/releases/tag/v1.2.0"
 }
