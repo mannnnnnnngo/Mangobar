@@ -1,10 +1,10 @@
 {
-  "version": "1.1.1",
-  "build": 10101,
-  "publishedAt": "2026-09-14",
+  "version": "1.1.2",
+  "build": 10102,
+  "publishedAt": "2026-09-15",
   "minimumSystemVersion": "13.0",
-  "notes": "MangoBar now moves the macOS Dock out of its way on first run - to the right, hidden until the pointer goes there - so there is one taskbar along the bottom rather than two fighting over the same clicks. What the Dock was doing before is saved and put back when you switch it off or quit. Preferences > Advanced has the three settings.",
-  "downloadURL": "https://github.com/mannnnnnnngo/Mangobar/releases/download/v1.1.1/mangobar-1.1.1.dmg",
-  "sha256": "b79f5a74f82cbb3c7857e344bec71df8273083ecc5609297e96fd906830dcab5",
-  "releasePage": "https://github.com/mannnnnnnngo/Mangobar/releases/tag/v1.1.1"
+  "notes": "update checks are now instant",
+  "downloadURL": "https://github.com/mannnnnnnngo/Mangobar/releases/download/v1.1.2/mangobar-1.1.2.dmg",
+  "sha256": "2d6f1432723cbc804e5fca815d35075b90f2b2e5aee15fd4abf5539c46cd417e",
+  "releasePage": "https://github.com/mannnnnnnngo/Mangobar/releases/tag/v1.1.2"
 }
