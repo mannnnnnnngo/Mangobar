@@ -1,10 +1,10 @@
 {
-  "version": "1.2.0",
-  "build": 10200,
-  "publishedAt": "2026-09-15",
+  "version": "1.3.0",
+  "build": 10300,
+  "publishedAt": "2026-10-12",
   "minimumSystemVersion": "13.0",
-  "notes": "update checks work again, and permissions stop resetting on every update",
-  "downloadURL": "https://github.com/mannnnnnnngo/Mangobar/releases/download/v1.2.0/mangobar-1.2.0.dmg",
-  "sha256": "0f61589510fb2ca4f330486d39666512f4f2a971105754f21f2108b71fc9a6e1",
-  "releasePage": "https://github.com/mannnnnnnngo/Mangobar/releases/tag/v1.2.0"
+  "notes": "Open at Login now works: MangoBar is added to Login Items properly and starts at login. The Mac's own Dock is hidden automatically while MangoBar runs (and comes back when you quit).",
+  "downloadURL": "https://github.com/mannnnnnnngo/Mangobar/releases/download/v1.3.0/mangobar-1.3.0.dmg",
+  "sha256": "b60fe996515e0bb5fee16653335f299677de90da58caa9f81cec512b34d8e9fe",
+  "releasePage": "https://github.com/mannnnnnnngo/Mangobar/releases/tag/v1.3.0"
 }
