@@ -335,4 +335,6 @@ Copyright © 2026 Mingyu. All rights reserved.
 
 Part of [🥭 MangoApps](https://github.com/mannnnnnnngo/MangoApps)
 
+🎓 Also by Mango: [High Honors](https://highhonors.pages.dev), a free student dashboard for Google Classroom, Gmail and Calendar
+
 </div>
