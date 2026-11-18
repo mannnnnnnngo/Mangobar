@@ -1,10 +1,10 @@
 {
-  "version": "1.4.0",
-  "build": 10400,
-  "publishedAt": "2026-10-14",
+  "version": "1.5.0",
+  "build": 10500,
+  "publishedAt": "2026-11-18",
   "minimumSystemVersion": "13.0",
-  "notes": "Chrome web apps (like High Honors) no longer replace Chrome in the bar. Clicking an app whose windows have no names opens it instead of showing a list of Untitled.",
-  "downloadURL": "https://github.com/mannnnnnnngo/Mangobar/releases/download/v1.4.0/mangobar-1.4.0.dmg",
-  "sha256": "6ec2213a56dfd12a65590bcc9155d16fcbc95e524786bd2e936fe50c54c6e6f9",
-  "releasePage": "https://github.com/mannnnnnnngo/Mangobar/releases/tag/v1.4.0"
+  "notes": "The Mac Dock stays hidden: changing a MangoBar setting, restarting or reopening no longer brings it back.",
+  "downloadURL": "https://github.com/mannnnnnnngo/Mangobar/releases/download/v1.5.0/mangobar-1.5.0.dmg",
+  "sha256": "6f48d83f127be66130b3cb0ef5ac8bad91de6cb71865d678dea80156ce3025f4",
+  "releasePage": "https://github.com/mannnnnnnngo/Mangobar/releases/tag/v1.5.0"
 }
